@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Uy Nguyen — computer science and mathematics student interested in cybersecurity, AI red teaming, and software engineering." />
+  <title>Uy Nguyen — Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #111a2e;
+      --panel-2: #15213a;
+      --text: #edf2ff;
+      --muted: #a6b2ca;
+      --line: rgba(181, 198, 230, .16);
+      --accent: #8bafff;
+      --accent-2: #78e0c2;
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 80% 0%, rgba(79, 111, 190, .20), transparent 38rem),
+        radial-gradient(ellipse at 0% 45%, rgba(47, 145, 125, .10), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      font: 16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent-2); }
+    .wrap { width: min(var(--max), calc(100% - 44px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(11, 16, 32, .78);
+      border-bottom: 1px solid var(--line);
+    }
+    nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.08rem; }
+    .brand span { color: var(--accent); }
+    .navlinks { display: flex; gap: 25px; color: var(--muted); font-size: .9rem; }
+    .hero { padding: 112px 0 92px; display: grid; grid-template-columns: 1.5fr .8fr; gap: 55px; align-items: center; }
+    .eyebrow { color: var(--accent-2); text-transform: uppercase; letter-spacing: .16em; font-size: .76rem; font-weight: 800; }
+    h1 { font-size: clamp(3rem, 7vw, 5.7rem); line-height: .99; letter-spacing: -.07em; margin: 18px 0 24px; }
+    h1 span { color: var(--accent); }
+    .lead { color: var(--muted); max-width: 650px; font-size: 1.13rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 11px 18px; border-radius: 999px; border: 1px solid var(--line); font-weight: 700; font-size: .92rem; transition: .2s ease; }
+    .btn.primary { background: var(--accent); color: #091124; border-color: var(--accent); }
+    .btn:hover { transform: translateY(-2px); }
+    .hero-card { background: linear-gradient(145deg, rgba(21,33,58,.95), rgba(14,22,40,.9)); border: 1px solid var(--line); border-radius: 24px; padding: 27px; box-shadow: 0 25px 80px rgba(0,0,0,.22); }
+    .orbit { width: 100%; aspect-ratio: 1; max-width: 250px; margin: 0 auto 22px; border-radius: 50%; border: 1px solid rgba(139,175,255,.42); display: grid; place-items: center; position: relative; background: radial-gradient(circle, rgba(139,175,255,.18), transparent 65%); }
+    .orbit:before, .orbit:after { content: ""; position: absolute; border: 1px solid rgba(120,224,194,.38); border-radius: 50%; inset: 18%; transform: rotate(48deg) scaleX(1.55); }
+    .orbit:after { transform: rotate(-48deg) scaleX(1.55); }
+    .orbit strong { font-size: 3.2rem; letter-spacing: -.08em; color: var(--accent); z-index: 1; }
+    .quick { display: grid; gap: 12px; }
+    .quick div { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding-top: 11px; color: var(--muted); font-size: .88rem; }
+    .quick b { color: var(--text); font-weight: 650; text-align: right; }
+    section { padding: 76px 0; border-top: 1px solid var(--line); }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 30px; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.055em; line-height: 1.1; margin: 8px 0 0; }
+    .section-note { color: var(--muted); max-width: 420px; margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 24px; }
+    .panel { background: rgba(17,26,46,.78); border: 1px solid var(--line); border-radius: 18px; padding: 25px; }
+    .panel p { color: var(--muted); margin: 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+    .tag { padding: 6px 11px; border-radius: 999px; background: rgba(139,175,255,.10); border: 1px solid rgba(139,175,255,.18); color: #cbd9ff; font-size: .82rem; }
+    .focus-list { display: grid; gap: 15px; }
+    .focus-item { display: flex; gap: 13px; align-items: flex-start; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent-2); margin-top: 9px; flex: 0 0 auto; }
+    .focus-item b { display: block; margin-bottom: 2px; }
+    .focus-item span { color: var(--muted); font-size: .92rem; }
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .project { background: linear-gradient(145deg, rgba(21,33,58,.88), rgba(17,26,46,.78)); border: 1px solid var(--line); border-radius: 18px; padding: 25px; display: flex; flex-direction: column; min-height: 255px; }
+    .project-top { display: flex; justify-content: space-between; gap: 15px; color: var(--accent-2); font-size: .77rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    h3 { font-size: 1.35rem; letter-spacing: -.035em; margin: 17px 0 9px; }
+    .project p { color: var(--muted); margin: 0 0 20px; }
+    .project .tags { margin-top: auto; }
+    .timeline { display: grid; gap: 17px; }
+    .entry { display: grid; grid-template-columns: 180px 1fr; gap: 25px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .entry:last-child { border-bottom: 0; }
+    .date { color: var(--accent-2); font-size: .85rem; font-weight: 750; }
+    .entry h3 { margin: 0 0 5px; }
+    .entry p { color: var(--muted); margin: 0; }
+    .contact { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 32px; border-radius: 22px; border: 1px solid rgba(139,175,255,.25); background: linear-gradient(120deg, rgba(139,175,255,.12), rgba(120,224,194,.07)); }
+    .contact p { color: var(--muted); margin: 8px 0 0; }
+    footer { padding: 27px 0 38px; color: var(--muted); font-size: .85rem; display: flex; justify-content: space-between; gap: 18px; }
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; padding: 80px 0 65px; gap: 35px; }
+      .hero-card { max-width: 440px; }
+      .about-grid, .cards { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-note { margin-top: 13px; }
+      .entry { grid-template-columns: 1fr; gap: 7px; }
+      .contact { display: block; }
+      .contact .btn { margin-top: 20px; }
+      .navlinks { gap: 13px; font-size: .8rem; }
+    }
+    @media (max-width: 470px) {
+      .wrap { width: min(var(--max), calc(100% - 30px)); }
+      .navlinks a:nth-child(2), .navlinks a:nth-child(3) { display: none; }
+      h1 { font-size: 3.35rem; }
+      footer { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap">
+      <a class="brand" href="#home">UY<span>.</span></a>
+      <div class="navlinks">
+        <a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap hero" id="home">
+      <div>
+        <div class="eyebrow">Computer Science · Mathematics · Cybersecurity</div>
+        <h1>Hi, I'm Uy.<br /><span>I build and break</span> things.</h1>
+        <p class="lead">I'm a computer science and mathematics student at the University of Georgia interested in cybersecurity, AI red teaming, and building reliable software. I enjoy understanding how systems work—and finding ways to make them stronger.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore my work</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="orbit"><strong>UN</strong></div>
+        <div class="quick">
+          <div><span>Currently</span><b>UGA student</b></div>
+          <div><span>Focus</span><b>AI security & software</b></div>
+          <div><span>Based in</span><b>Athens, Georgia</b></div>
+        </div>
+      </aside>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">A little about me</div><h2>Curiosity meets engineering.</h2></div>
+          <p class="section-note">I like working at the intersection of theory and practice: using mathematical thinking to understand complex systems, then applying that knowledge through code.</p>
+        </div>
+        <div class="about-grid">
+          <div class="panel">
+            <p>I'm pursuing a double major in Computer Science and Mathematics at the University of Georgia. My interests include adversarial machine learning, vulnerability research, network security, and software engineering. Whether I'm analyzing network traffic or testing an AI-enabled system, I aim to approach problems methodically, communicate findings clearly, and build practical solutions.</p>
+            <div class="tags">
+              <span class="tag">Cybersecurity</span><span class="tag">AI Red Teaming</span><span class="tag">Machine Learning</span><span class="tag">Software Engineering</span><span class="tag">Applied Mathematics</span>
+            </div>
+          </div>
+          <div class="panel focus-list">
+            <div class="focus-item"><i class="dot"></i><div><b>AI security</b><span>Evaluating AI-enabled systems and exploring model vulnerabilities.</span></div></div>
+            <div class="focus-item"><i class="dot"></i><div><b>Systems & networks</b><span>Understanding protocols, operating systems, and attack surfaces.</span></div></div>
+            <div class="focus-item"><i class="dot"></i><div><b>Data & algorithms</b><span>Applying computational and mathematical techniques to real problems.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Selected work</div><h2>Projects I've built.</h2></div>
+          <p class="section-note">A selection of projects spanning security, full-stack development, and low-level programming.</p>
+        </div>
+        <div class="cards">
+          <article class="project">
+            <div class="project-top"><span>Cybersecurity · Python</span><span>01</span></div>
+            <h3>Network Traffic Anomaly Detector</h3>
+            <p>A network analysis tool that processes packet captures to identify suspicious behavior, including port scans, SYN floods, and command-and-control beaconing. Combines rule-based detection with an Isolation Forest model.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Scapy</span><span class="tag">Isolation Forest</span><span class="tag">PCAP</span></div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span>Full-stack · Web</span><span>02</span></div>
+            <h3>Cinema E‑Booking System</h3>
+            <p>A full-stack cinema booking application with movie discovery, seat selection, customer accounts, and administrative movie management. Built with a React/Next.js frontend and a Spring Boot backend.</p>
+            <div class="tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">React</span><span class="tag">MongoDB</span></div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span>Systems · C</span><span>03</span></div>
+            <h3>Multi-threaded Web Server</h3>
+            <p>A systems programming project exploring concurrent request handling, network communication, and the fundamentals of server-side software.</p>
+            <div class="tags"><span class="tag">C</span><span class="tag">Networking</span><span class="tag">Concurrency</span></div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span>Research · AI security</span><span>04</span></div>
+            <h3>AI Red Teaming</h3>
+            <p>Collaborative security work evaluating AI-enabled systems, studying adversarial techniques, developing testing approaches, and communicating findings through technical reports.</p>
+            <div class="tags"><span class="tag">AI Security</span><span class="tag">Adversarial Testing</span><span class="tag">Research</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Background</div><h2>Experience & education.</h2></div>
+        </div>
+        <div class="panel timeline">
+          <div class="entry">
+            <div class="date">Current</div>
+            <div><h3>Red-Team Engineer / Student</h3><p>University of Georgia College of Engineering · Industry partnership with Lockheed Martin</p><p style="margin-top:8px">Contribute to evaluating AI-enabled systems through adversarial testing, attack research, tooling, and technical reporting.</p></div>
+          </div>
+          <div class="entry">
+            <div class="date">In progress</div>
+            <div><h3>B.S. Computer Science & B.S. Mathematics</h3><p>University of Georgia</p><p style="margin-top:8px">Coursework and interests spanning cybersecurity, algorithms, operating systems, abstract algebra, real analysis, and applied mathematics.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <div><div class="eyebrow">What's next?</div><h2>Let's connect.</h2><p>Interested in cybersecurity, software engineering, or a challenging technical problem? I'd be glad to connect.</p></div>
+          <a class="btn primary" href="mailto:your.email@example.com">Email me ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>© <span id="year"></span> Uy Nguyen</span>
+    <span>Designed & built with curiosity.</span>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
